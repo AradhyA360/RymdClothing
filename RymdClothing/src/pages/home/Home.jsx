@@ -5,6 +5,7 @@ import HeroSection from "../../components/herosection/Herosection";
 import Filter from "../../components/filter/Filter";
 import ProductCard from "../../components/productCard/ProductCard";
 import Testimonial from "../../components/testimonial/Testimonial";
+import Track from "../../components/track/Track";
 
 function Home() {
   return (
@@ -12,6 +13,7 @@ function Home() {
       <HeroSection />
       <Filter />
       <ProductCard />
+      <Track />
       <Testimonial />
     </Layout>
   );
