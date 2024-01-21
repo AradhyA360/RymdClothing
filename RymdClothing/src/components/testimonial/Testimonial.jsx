@@ -27,7 +27,7 @@ function Testimonial() {
                 <img
                   alt="testimonial"
                   className="w-20 h-20 mb-8 object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100"
-                  src="https://ecommerce-sk.vercel.app/img/kamal.png"
+                  src="https://mycollegepartner.netlify.app/Aradhya1.jpeg"
                 />
                 <p
                   style={{ color: mode === "dark" ? "white" : "" }}
@@ -43,7 +43,7 @@ function Testimonial() {
                   style={{ color: mode === "dark" ? "#ff4162" : "" }}
                   className="text-gray-900 font-medium title-font tracking-wider text-sm uppercase"
                 >
-                  Kamal Nayan Upadhyay
+                  Aradhya Priyadarshi
                 </h2>
                 <p
                   style={{ color: mode === "dark" ? "white" : "" }}
@@ -58,7 +58,7 @@ function Testimonial() {
                 <img
                   alt="testimonial"
                   className="w-20 h-20 mb-8 object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100"
-                  src="https://cdn-icons-png.flaticon.com/128/2763/2763444.png"
+                  src="https://media.licdn.com/dms/image/D5603AQGOsoNlAEcv0A/profile-displayphoto-shrink_400_400/0/1705219325120?e=1711584000&v=beta&t=s9OQvkvm5_N-9rePR-m0pB5akhOC4Ef0oKnRwyiRbJU"
                 />
                 <p
                   style={{ color: mode === "dark" ? "white" : "" }}
