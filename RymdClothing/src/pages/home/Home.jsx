@@ -4,6 +4,7 @@ import myContext from "../../context/data/myContext";
 import HeroSection from "../../components/herosection/Herosection";
 import Filter from "../../components/filter/Filter";
 import ProductCard from "../../components/productCard/ProductCard";
+import Testimonial from "../../components/testimonial/Testimonial";
 
 function Home() {
   return (
@@ -11,6 +12,7 @@ function Home() {
       <HeroSection />
       <Filter />
       <ProductCard />
+      <Testimonial />
     </Layout>
   );
 }
