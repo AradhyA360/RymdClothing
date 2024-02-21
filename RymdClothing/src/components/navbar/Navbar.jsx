@@ -1,16 +1,23 @@
-import React, { Fragment, useContext, useState } from "react";
-import myContext from "../../context/data/myContext";
+import { Fragment, useContext, useState } from "react";
+import { Dialog, Transition } from "@headlessui/react";
+import { Link } from "react-router-dom";
 import { BsFillCloudSunFill } from "react-icons/bs";
 import { FiSun } from "react-icons/fi";
-import { Link } from "react-router-dom";
-import { Dialog, Transition } from "@headlessui/react";
+import myContext from "../../context/data/myContext";
 import { RxCross2 } from "react-icons/rx";
 
-function Navbar() {
-  const context = useContext(myContext);
-  const { mode, toggleMode } = context;
-
+export default function Navbar() {
   const [open, setOpen] = useState(false);
+
+  const context = useContext(myContext);
+  const { toggleMode, mode } = context;
+
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  const logout = () => {
+    localStorage.clear("user");
+    window.location.href = "/";
+  };
 
   return (
     <div className="bg-white sticky top-0 z-50  ">
@@ -74,24 +81,33 @@ function Navbar() {
                     </Link>
                   </div>
 
-                  <div className="flow-root">
-                    <Link
-                      to={"/dashboard"}
-                      className="-m-2 block p-2 font-medium text-gray-900"
-                      style={{ color: mode === "dark" ? "white" : "" }}
-                    >
-                      admin
-                    </Link>
-                  </div>
+                  {user?.user?.email === "knupadhyay784@gmail.com" ? (
+                    <div className="flow-root">
+                      <Link
+                        to={"/dashboard"}
+                        className="-m-2 block p-2 font-medium text-gray-900"
+                        style={{ color: mode === "dark" ? "white" : "" }}
+                      >
+                        admin
+                      </Link>
+                    </div>
+                  ) : (
+                    ""
+                  )}
 
-                  <div className="flow-root">
-                    <a
-                      className="-m-2 block p-2 font-medium text-gray-900 cursor-pointer"
-                      style={{ color: mode === "dark" ? "white" : "" }}
-                    >
-                      Logout
-                    </a>
-                  </div>
+                  {user ? (
+                    <div className="flow-root">
+                      <a
+                        onClick={logout}
+                        className="-m-2 block p-2 font-medium text-gray-900 cursor-pointer"
+                        style={{ color: mode === "dark" ? "white" : "" }}
+                      >
+                        Logout
+                      </a>
+                    </div>
+                  ) : (
+                    ""
+                  )}
                   <div className="flow-root">
                     <Link
                       to={"/"}
@@ -99,8 +115,8 @@ function Navbar() {
                     >
                       <img
                         className="inline-block w-10 h-10 rounded-full"
-                        src="https://i.pinimg.com/474x/5e/6e/99/5e6e99a4b60329ed067fc68c0227ac75.jpg"
-                        alt="Merchant"
+                        src="https://overreacted.io/static/profile-pic-c715447ce38098828758e525a1128b87.jpg"
+                        alt="Dan_Abromov"
                       />{" "}
                     </Link>
                   </div>
@@ -131,7 +147,7 @@ function Navbar() {
       {/* desktop  */}
       <header className="relative bg-white">
         <p
-          className="flex h-10 items-center justify-center bg-purple-600 px-4 text-sm font-medium text-white sm:px-6 lg:px-8"
+          className="flex h-10 items-center justify-center bg-pink-600 px-4 text-sm font-medium text-white sm:px-6 lg:px-8"
           style={{
             backgroundColor: mode === "dark" ? "rgb(62 64 66)" : "",
             color: mode === "dark" ? "white" : "",
@@ -184,7 +200,7 @@ function Navbar() {
                       className=" text-2xl font-bold text-black  px-2 py-1 rounded"
                       style={{ color: mode === "dark" ? "white" : "" }}
                     >
-                      RYMD CLOTHING
+                      E-Bharat
                     </h1>
                   </div>
                 </Link>
@@ -206,20 +222,36 @@ function Navbar() {
                   >
                     Order
                   </Link>
-                  <Link
-                    to={"/dashboard"}
-                    className="text-sm font-medium text-gray-700 "
-                    style={{ color: mode === "dark" ? "white" : "" }}
-                  >
-                    Admin
-                  </Link>
 
-                  <a
-                    className="text-sm font-medium text-gray-700 cursor-pointer  "
-                    style={{ color: mode === "dark" ? "white" : "" }}
-                  >
-                    Logout
-                  </a>
+                  {user?.user?.email === "knupadhyay784@gmail.com" ? (
+                    <Link
+                      to={"/dashboard"}
+                      className="text-sm font-medium text-gray-700 "
+                      style={{ color: mode === "dark" ? "white" : "" }}
+                    >
+                      Admin
+                    </Link>
+                  ) : (
+                    ""
+                  )}
+
+                  {user ? (
+                    <a
+                      onClick={logout}
+                      className="text-sm font-medium text-gray-700 cursor-pointer  "
+                      style={{ color: mode === "dark" ? "white" : "" }}
+                    >
+                      Logout
+                    </a>
+                  ) : (
+                    <Link
+                      to={"/signup"}
+                      className="text-sm font-medium text-gray-700 cursor-pointer  "
+                      style={{ color: mode === "dark" ? "white" : "" }}
+                    >
+                      Signup
+                    </Link>
+                  )}
                 </div>
 
                 <div className="hidden lg:ml-8 lg:flex">
@@ -241,8 +273,8 @@ function Navbar() {
                   <a href="#" className="flex items-center text-gray-700 ">
                     <img
                       className="inline-block w-10 h-10 rounded-full"
-                      src="https://i.pinimg.com/474x/5e/6e/99/5e6e99a4b60329ed067fc68c0227ac75.jpg"
-                      alt="Merchant"
+                      src="https://overreacted.io/static/profile-pic-c715447ce38098828758e525a1128b87.jpg"
+                      alt="Dan_Abromov"
                     />
                   </a>
                 </div>
@@ -282,7 +314,6 @@ function Navbar() {
                         d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
                       />
                     </svg>
-
                     <span
                       className="ml-2 text-sm font-medium text-gray-700 group-"
                       style={{ color: mode === "dark" ? "white" : "" }}
@@ -300,5 +331,3 @@ function Navbar() {
     </div>
   );
 }
-
-export default Navbar;
